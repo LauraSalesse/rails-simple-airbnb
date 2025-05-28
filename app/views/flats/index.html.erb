@@ -1,0 +1,29 @@
+<p class="navbar navbar-light" style="background-color: #e3f2fd;">simple airbnb</p>
+<h1> All our flats </h1>
+
+<div class="container">
+  <div class="row">
+    <%= @flats.each do |f| %>
+      <div class="col-md-4">
+        <div class="card">
+          <h5>Name: <%= f.name%></h5>
+          <p><%= f.address%></p>
+          <p><%= f.description%></p>
+
+          <p>
+            <i class="fa-solid fa-money-bill"></i>
+            price:<%= f.price_per_night%>
+            <i class="fa-solid fa-person"></i><i class="fa-solid fa-person"></i>
+            number of guests: <%= f.number_of_guests%>
+          </p>
+
+          <div>
+            <%= link_to "More info", flat_path(f), class: "text-primary" %>
+            <%= link_to "Edit", edit_flat_path(f), class: "text-warning" %>
+            <%= link_to "Remove", flat_path(f), method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
